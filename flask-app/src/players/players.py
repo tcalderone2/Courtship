@@ -6,8 +6,8 @@ from src import db
 players = Blueprint('players', __name__)
 
 # Create the profile for a certain player
-@players.route('/playerProfile/<playerID>', methods=['POST'])
-def create_playerProfile(playerID):
+@players.route('/playerProfile', methods=['POST'])
+def create_playerProfile():
     
     # access json data from request object
 
@@ -27,8 +27,8 @@ def create_playerProfile(playerID):
     # construct the insert statement
 
     insert_statement = 'INSERT INTO Player (first_name, last_name, grade, age, highschoolid, sat, act, gpa, email) VALUES (\''
-    insert_statement += first_name + '\', \'' + last_name + '\', \'' + grade + '\', ' + age + ', ' + highschoolid + ', '
-    insert_statement += sat + ', ' + act + ', ' + gpa + ', \'' + email + '\');'
+    insert_statement += first_name + '\', \'' + last_name + '\', \'' + grade + '\', ' + str(age) + ', ' + str(highschoolid) + ', '
+    insert_statement += str(sat) + ', ' + str(act) + ', ' + str(gpa) + ', \'' + email + '\');'
 
 
     # execute query
@@ -59,11 +59,11 @@ def update_playerProfile(playerID):
     
 
 # Delete the player profile for a certain player
-@players.route('playerProfile/<playerID>', methods=['DELETE'])
+@players.route('/playerProfile/<playerID>', methods=['DELETE'])
 def delete_playerProfile(playerID):
     
     # query to delete the player with the corresponding id from the table 
-    delete_statement = 'DELETE FROM Player WHERE playerid = ' + int(playerID) + ';'
+    delete_statement = 'DELETE FROM Player WHERE playerid = ' + playerID + ';'
     
     # execute the query
     cursor = db.get_db().cursor()
@@ -73,11 +73,11 @@ def delete_playerProfile(playerID):
     return "Player Profile successfully deleted"
 
 # Retrieve the profile for a certain coach so a player can view their information
-@players.route('coachProfile/<CCoachID>', methods=['GET'])
+@players.route('/coachProfile/<CCoachID>', methods=['GET'])
 def get_collegeCoachProfile(CCoachID):
     cursor = db.get_db().cursor()
 
-    query = 'SELECT first_name, last_name, age, school, email FROM Col_Coach WHERE coachid = ' + int(CCoachID) + ';'
+    query = 'SELECT first_name, last_name, age, school, email FROM Col_Coach WHERE coachid = ' + CCoachID + ';'
 
     # use cursor to query the database for the coach profile that has an ID that matches the given ID
     cursor.execute(query)
@@ -100,7 +100,7 @@ def get_collegeCoachProfile(CCoachID):
     return jsonify(json_data)
 
 # Retrieve a list of all colleges that are currently recruiting
-@players.route('colleges', methods=['GET'])
+@players.route('/colleges', methods=['GET'])
 def get_colleges():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
@@ -127,11 +127,11 @@ def get_colleges():
 
 
 # Retrieve the profile of a certain college
-@players.route('collegeProfile/<collegeID>', methods=['GET'])
+@players.route('/collegeProfile/<collegeID>', methods=['GET'])
 def get_collegeProfile(collegeID):
     cursor = db.get_db().cursor()
 
-    query = 'SELECT col_name, state, enrollment, conference, division, acceptance_rate, average_gpa, average_sat FROM College WHERE collegeid = ' + int(collegeID) + ';'
+    query = 'SELECT col_name, state, enrollment, conference, division, acceptance_rate, average_gpa, average_sat FROM College WHERE collegeid = ' + collegeID + ';'
 
     # use cursor to query the database for the college profile that has an ID that matches the given ID
     cursor.execute(query)
@@ -155,11 +155,11 @@ def get_collegeProfile(collegeID):
 
 
 # Retrieve the schedule of upcoming games for a certain college
-@players.route('schedule/<collegeID>', methods=['GET'])
+@players.route('/schedule/<collegeID>', methods=['GET'])
 def get_collegeSchedule(collegeID):
     cursor = db.get_db().cursor()
 
-    query = 'SELECT game_date, opponent, venue, isdivision, isconference FROM Col_Schedule WHERE collegeid = ' + int(collegeID) + ';'
+    query = 'SELECT game_date, opponent, venue, isdivision, isconference FROM Col_Schedule WHERE collegeid = ' + collegeID + ';'
 
     # use cursor to query the database for the college schedule for a college that has an ID that matches the given ID
     cursor.execute(query)
@@ -182,11 +182,11 @@ def get_collegeSchedule(collegeID):
     return jsonify(json_data)
 
 # Retrieve the roster of a certain college's basketball team
-@players.route('roster/<collegeID>', methods=['GET'])
+@players.route('/roster/<collegeID>', methods=['GET'])
 def get_collegeRoster(collegeID):
     cursor = db.get_db().cursor()
 
-    query = 'SELECT first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster WHERE collegeid = ' + int(collegeID) + ';'
+    query = 'SELECT first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster WHERE collegeid = ' + collegeID + ';'
 
     # use cursor to query the database for the college roster for a college that has an ID that matches the given ID
     cursor.execute(query)
