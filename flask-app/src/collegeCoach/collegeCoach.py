@@ -123,7 +123,7 @@ def get_PlayerStats(PlayerID):
     select_statement = "SELECT playerid, position, gps, ppg, apg, rpg, bpg, spg, ft_percentage, fg_percentage, threept_percentage FROM Player_Stats WHERE playerid = " + PlayerID + ";"
 
     # use cursor to query the database for the player stats that has an ID that matches the given ID
-    cursor.execute(query)
+    cursor.execute(select_statement)
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
