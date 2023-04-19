@@ -9,6 +9,8 @@ This repo contains a boilerplate setup for spinning up 3 Docker containers:
 
 Courtship is an app designed to help connect high school basketball players with college coaches. Players who want to continue their basetkball careers in college want to be able to build a profile to share with college coaches and demonstrate their interests. College coaches want to be able to search for recruits, build a relationship with them, and have a watchlist of talent to communicate with staff. This app, Courtship, will be the bridge between these two users and aid both high school basketball players and college coaches with the recruitment process.
 
+Here is a link [https://docs.google.com/document/d/1FbLToa4NtjUlKC-bsWh7cRaHPd9oPcKYN8tJ9HyLSDc/edit] to further descriptions of the user personas
+
 ## How to setup and start the containers
 **Important** - you need Docker Desktop installed
 
