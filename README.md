@@ -21,3 +21,7 @@ Here is a [link](https://docs.google.com/document/d/1FbLToa4NtjUlKC-bsWh7cRaHPd9
 Our appsmith app features four pages that allows:
 
 The link to the appsmith is [here]()
+
+## Troubleshooting & FAQ
+
+Please reach out to us with any troubleshooting issues. You could also check on Docker and AppSmith documentation to answers to frequently asked questions.
