@@ -251,5 +251,57 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "dbefd13d-3fb4-409c-9476-c64bd345f017",
+    "colId": "897be4b0-6726-4f88-8efe-3dac886a01fd",
+    "containerId": "",
+    "name": "testUpdatePlayerProfile",
+    "url": "localhost:8001/p/playerProfile/1",
+    "method": "PUT",
+    "sortNum": 180000,
+    "created": "2023-04-19T20:41:07.356Z",
+    "modified": "2023-04-19T21:51:54.741Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"first_name\": \"Tom\",\n  \"last_name\": \"Murphy\",\n  \"grade\": null,\n  \"age\": null,\n  \"highschoolid\": null,\n  \"sat\": null,\n  \"act\": null,\n  \"gpa\": null,\n  \"email\": null\n  \n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "ca4fe975-753a-4a62-bd9f-83a1df26917b",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testGetPlayerStats",
+    "url": "localhost:8001/c/PlayerStats/1",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-19T20:47:23.705Z",
+    "modified": "2023-04-19T20:47:41.103Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "94118a5b-f961-4d37-9e20-ce2316dfb6e5",
+    "colId": "897be4b0-6726-4f88-8efe-3dac886a01fd",
+    "containerId": "",
+    "name": "testUpdatePlayerProfile2",
+    "url": "localhost:8001/p/playerProfile/11",
+    "method": "PUT",
+    "sortNum": 190000,
+    "created": "2023-04-19T21:54:00.752Z",
+    "modified": "2023-04-19T21:56:18.646Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"first_name\": \"Derek\",\n  \"last_name\": \"Jeter\",\n  \"grade\": null,\n  \"age\": 15,\n  \"highschoolid\": 4,\n  \"sat\": null,\n  \"act\": 36,\n  \"gpa\": 3.7,\n  \"email\": null\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

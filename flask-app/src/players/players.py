@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -13,7 +13,6 @@ def create_playerProfile():
 
     req_data = request.get_json()
 
-    #do we need to do insert statements with the ID if we set it to auto-increment?
     first_name = req_data['first_name']
     last_name = req_data['last_name']
     grade = req_data['grade']
@@ -43,10 +42,10 @@ def create_playerProfile():
 @players.route('/playerProfile/<playerID>', methods=['PUT'])
 def update_playerProfile(playerID):
     
+    # access json data from request object
+
     req_data = request.get_json()
 
-    #do we need to do insert statements with the ID if we set it to auto-increment?
-    #how do we know which fields are getting updated exactly
     first_name = req_data['first_name']
     last_name = req_data['last_name']
     grade = req_data['grade']
@@ -56,7 +55,66 @@ def update_playerProfile(playerID):
     act = req_data['act']
     gpa = req_data['gpa']
     email = req_data['email']
+
+    # construct the update statement
+
+    update_statement = "UPDATE Player SET "
+
+    # need to see which attributes the user wants to update
+
+    if (first_name):
+        update_statement += "first_name = \'" + first_name + "\', "
+    if (last_name):
+        update_statement += "last_name = \'" + last_name + "\', "
+    if (grade):
+        update_statement += "grade = \'" + grade + "\', "
+    if (age):
+        update_statement += "age = " + str(age) + ", "
+    if (highschoolid):
+        update_statement += "highschoolid = " + str(highschoolid) + ", "
+    if (sat):
+        update_statement += "sat = " + str(sat) + ", "
+    if (act):
+        update_statement += "act = " + str(act) + ", "
+    if (gpa):
+        update_statement += "gpa = " + str(gpa) + ", "
+    if (email):
+        update_statement += "email = \'" + email + "\', "
     
+    # need to get rid of the last comma and space if that's the end of the set
+    update_statement = update_statement[:- 2]
+
+    update_statement += " WHERE playerid = " + playerID + ";"
+    current_app.logger.info(update_statement)
+
+    # execute the update query
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(update_statement)
+    db.get_db().commit()
+
+    # query the database to return all the info for the updated player
+    query = "SELECT first_name, last_name, grade, age, highschoolid, sat, act, gpa, email FROM Player WHERE playerid = " + playerID + ";"
+
+    cursor.execute(query)
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+    
+
+    return jsonify(json_data)
 
 # Delete the player profile for a certain player
 @players.route('/playerProfile/<playerID>', methods=['DELETE'])
