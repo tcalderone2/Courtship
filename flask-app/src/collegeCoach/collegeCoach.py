@@ -217,10 +217,6 @@ def update_college_roster(collegeid):
 
     update_statement += " WHERE collegeid = " + collegeid + ";"
 
-
-
-    # update_statement = f"UPDATE Col_Roster SET first_name = '{first_name}', last_name = '{last_name}', position = '{position}', height = {height}, weight = {weight}, grade = '{grade}', jersey_number = {jersey_number}, scholarship_type = '{scholarship_type}' WHERE collegeid = {collegeid} AND playerid = {playerid};"
-
     # Execute the update statement
     cursor = db.get_db().cursor()
     cursor.execute(update_statement)
