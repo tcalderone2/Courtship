@@ -116,6 +116,35 @@ def update_playerProfile(playerID):
 
     return jsonify(json_data)
 
+# Retrieve the information of all other players
+@players.route('/playerProfile', methods=['GET'])
+def get_allPlayers():
+    cursor = db.get_db().cursor()
+
+    query = "SELECT playerid, first_name, last_name, grade, age, highschoolid, sat, act, gpa, email FROM Player;"
+
+    # use cursor to query the database for the coach profile that has an ID that matches the given ID
+    cursor.execute(query)
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+
+
 # Delete the player profile for a certain player
 @players.route('/playerProfile/<playerID>', methods=['DELETE'])
 def delete_playerProfile(playerID):

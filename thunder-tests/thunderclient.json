@@ -581,5 +581,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "437cceaf-05f3-454a-ba50-b97c1c57f107",
+    "colId": "897be4b0-6726-4f88-8efe-3dac886a01fd",
+    "containerId": "",
+    "name": "testGetAllPlayers",
+    "url": "localhost:8001/p/playerProfile",
+    "method": "GET",
+    "sortNum": 200000,
+    "created": "2023-04-20T20:19:03.132Z",
+    "modified": "2023-04-20T20:19:34.729Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
