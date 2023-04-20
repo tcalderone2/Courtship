@@ -125,7 +125,7 @@ def get_roster():
 
     # Construct the query
 
-    query = "SELECT first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster;"
+    query = "SELECT collegeid, first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster;"
 
     # use cursor to query the database for the player profile that has an ID that matches the given ID
     cursor.execute(query)
