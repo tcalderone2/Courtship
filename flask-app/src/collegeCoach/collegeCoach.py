@@ -117,15 +117,15 @@ def delete_roster(collegeid):
     return "Roster for college successfully deleted"
 
 
-# Retrieve the roster for a certain college
-@collegeCoach.route('/roster/<collegeid>', methods=['GET'])
-def get_roster(collegeid):
+# Retrieve all rosters for all college teams
+@collegeCoach.route('/roster', methods=['GET'])
+def get_roster():
 
     cursor = db.get_db().cursor()
 
     # Construct the query
 
-    query = "SELECT first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster WHERE collegeid = " + collegeid + ";"
+    query = "SELECT first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster;"
 
     # use cursor to query the database for the player profile that has an ID that matches the given ID
     cursor.execute(query)
