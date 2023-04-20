@@ -59,14 +59,14 @@ def create_ScoutingReport():
     return "Scouting Report successfully created"
 
 # Retrieve the scouting report based on the given reportID
-@collegeCoach.route('/ScoutingReport/<reportID>', methods=['GET'])
-def get_ScoutingReport(reportID):
+@collegeCoach.route('/ScoutingReport', methods=['GET'])
+def get_ScoutingReport():
 
     cursor = db.get_db().cursor()
 
     # Construct the query
 
-    query = "SELECT playerid, comments, overallgrade, scout_name FROM ScoutingReport WHERE reportid = " + reportID + ";"
+    query = "SELECT playerid, comments, overallgrade, scout_name FROM ScoutingReport;"
 
     # use cursor to query the database for the player profile that has an ID that matches the given ID
     cursor.execute(query)
