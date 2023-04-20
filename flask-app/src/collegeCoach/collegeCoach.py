@@ -1,30 +1,29 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
-
 collegeCoach = Blueprint('collegeCoach', __name__)
 
-# Create the profile for a certain player
-@collegeCoach.route('/coachProfile/<CoachID>', methods=['POST'])
+# Create the profile for a certain coach
+@collegeCoach.route('/coachProfile', methods=['POST'])
 def create_coachProfile():
     
     # access json data from request object
 
     req_data = request.get_json()
 
-    #do we need to do insert statements with the ID if we set it to auto-increment?
     first_name = req_data['first_name']
     last_name = req_data['last_name']
-    age = req_data['school']
+    age = req_data['age']
     email = req_data['email']
     school = req_data['school']
 
     # construct the insert statement
 
     insert_statement = 'INSERT INTO Col_Coach (first_name, last_name, age, email, school) VALUES (\''
-    insert_statement += "VALUES ('" + first_name + "', '" + last_name + "', " + str(age) + ", " + str(school) + ", '" + email + "');"
+    insert_statement += first_name + '\', \'' + last_name + '\', ' + str(age) + ', \'' + email + '\', ' + str(school) + ');'
 
+    current_app.logger.info(insert_statement)
 
     # execute query
 
@@ -33,7 +32,7 @@ def create_coachProfile():
     db.get_db().commit()
     return "Coach Profile successfully created"
 
-@collegeCoach.route('/ScoutingReport/<playerID>', methods=['POST'])
+@collegeCoach.route('/ScoutingReport', methods=['POST'])
 def create_ScoutingReport():
     
     # access json data from request object
@@ -47,9 +46,10 @@ def create_ScoutingReport():
 
     # construct the insert statement
 
-    insert_statement = 'INSERT INTO Col_Coach (reportid, playerid, comments, overallgrade, scout_name) VALUES (\''
-    insert_statement += "VALUES (" + str(playerid) + ", '" + comments + "', " + str(overallgrade) + ", '" + scout_name + "');"
+    insert_statement = 'INSERT INTO ScoutingReport (playerid, comments, overallgrade, scout_name) VALUES ('
+    insert_statement += str(playerid) + ", '" + comments + "', " + str(overallgrade) + ", '" + scout_name + "');"
 
+    current_app.logger.info(insert_statement)
 
     # execute query
 
@@ -64,7 +64,7 @@ def create_ScoutingReport():
 def delete_coachProfile(coachID):
     
     # query to delete the player with the corresponding id from the table 
-    delete_statement = 'DELETE FROM Coach WHERE coachid = ' + coachID + ';'
+    delete_statement = 'DELETE FROM Col_Coach WHERE coachid = ' + coachID + ';'
     
     # execute the query
     cursor = db.get_db().cursor()
@@ -153,7 +153,21 @@ def update_team_stats(collegeid):
     ranking = req_data['ranking']
 
     # Construct the update statement
-    update_statement = "UPDATE ColTeam_Stats SET team = '{}', wins = {}, losses = {}, ranking = {} WHERE collegeid = {};".format(team, wins, losses, ranking, collegeid)
+    update_statement = "UPDATE ColTeam_Stats SET "
+    
+    if (team):
+        update_statement += "team = \'" + team + "\', "
+    if (wins):
+        update_statement += "wins = " + str(wins) + ", "
+    if (losses):
+        update_statement += "losses = " + str(losses) + ", "
+    if (ranking):
+        update_statement += "ranking = " + str(ranking) + ", "
+
+    # need to get rid of the last comma and space if that's the end of the set
+    update_statement = update_statement[:- 2]
+
+    update_statement += " WHERE collegeid = " + collegeid + ";"
 
     # Execute the update statement
     cursor = db.get_db().cursor()
@@ -161,10 +175,10 @@ def update_team_stats(collegeid):
     db.get_db().commit()
 
     # Return a success message
-    return "Team stats for college {} updated successfully."
+    return f"Team stats for college {collegeid} updated successfully."
 
-@collegeCoach.route('/colRoster/<collegeid>/<playerid>', methods=['PUT'])
-def update_college_roster(collegeid, playerid):
+@collegeCoach.route('/colRoster/<collegeid>', methods=['PUT'])
+def update_college_roster(collegeid):
     req_data = request.get_json()
 
     # Extract values from the request body
@@ -178,7 +192,34 @@ def update_college_roster(collegeid, playerid):
     scholarship_type = req_data['scholarship_type']
 
     # Construct the update statement
-    update_statement = f"UPDATE Col_Roster SET first_name = '{first_name}', last_name = '{last_name}', position = '{position}', height = {height}, weight = {weight}, grade = '{grade}', jersey_number = {jersey_number}, scholarship_type = '{scholarship_type}' WHERE collegeid = {collegeid} AND playerid = {playerid};"
+
+    update_statement = "UPDATE Col_Roster SET "
+
+    if (first_name):
+        update_statement += "first_name = \'" + first_name + "\', "
+    if (last_name):
+        update_statement += "last_name = \'" + last_name + "\', "
+    if (position):
+        update_statement += "position = \'" + position + "\', "
+    if (height):
+        update_statement += "height = " + str(height) + ", "
+    if (weight):
+        update_statement += "weight = " + str(weight) + ", "
+    if (grade):
+        update_statement += "grade = \'" + grade + "\', " 
+    if (jersey_number):
+        update_statement += "jersey_number = " + str(jersey_number) + ", "
+    if (scholarship_type):
+        update_statement += "scholarship_type = \'" + scholarship_type + "\', "
+    
+    # need to get rid of the last comma and space if that's the end of the set
+    update_statement = update_statement[:- 2]
+
+    update_statement += " WHERE collegeid = " + collegeid + ";"
+
+
+
+    # update_statement = f"UPDATE Col_Roster SET first_name = '{first_name}', last_name = '{last_name}', position = '{position}', height = {height}, weight = {weight}, grade = '{grade}', jersey_number = {jersey_number}, scholarship_type = '{scholarship_type}' WHERE collegeid = {collegeid} AND playerid = {playerid};"
 
     # Execute the update statement
     cursor = db.get_db().cursor()
@@ -186,4 +227,4 @@ def update_college_roster(collegeid, playerid):
     db.get_db().commit()
 
     # Return a success message
-    return f"Player {playerid} for college {collegeid} updated successfully."
+    return f"Player for college {collegeid} updated successfully."

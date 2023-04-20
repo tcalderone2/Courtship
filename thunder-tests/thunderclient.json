@@ -303,5 +303,255 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "7929dab0-bea5-4aa3-8c6e-c44092e57c56",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testCreateCoachProfile",
+    "url": "localhost:8001/c/coachProfile",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-04-19T22:18:10.104Z",
+    "modified": "2023-04-19T22:21:38.050Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"first_name\": \"Phil\",\n  \"last_name\": \"Jackson\",\n  \"age\": 77,\n  \"email\": \"pjackson@email.com\",\n  \"school\": 8\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1a6128dc-af0b-4ea6-b697-870aac9d0077",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testGetPlayerStats2",
+    "url": "localhost:8001/c/PlayerStats/11",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-04-20T01:55:15.184Z",
+    "modified": "2023-04-20T01:57:43.193Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "736d2533-b1a4-4488-b81c-0e434ce1ee23",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testCreateCoachProfile2",
+    "url": "localhost:8001/c/coachProfile",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-04-20T02:30:03.321Z",
+    "modified": "2023-04-20T02:31:24.365Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"first_name\": \"Mike\",\n  \"last_name\": \"Brown\",\n  \"age\": 54,\n  \"email\": \"kingmikebrown@gmail.com\",\n  \"school\": 56\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c6ebd6d1-e6d3-41fe-995a-68b15ed68a29",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testDeleteCoachProfile",
+    "url": "localhost:8001/c/coachProfile/101",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2023-04-20T02:33:09.512Z",
+    "modified": "2023-04-20T02:33:28.497Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a50859fb-4eab-4b16-80f3-4dcf2d202e23",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testDeleteCoachProfile2",
+    "url": "localhost:8001/c/coachProfile/102",
+    "method": "DELETE",
+    "sortNum": 70000,
+    "created": "2023-04-20T02:34:07.977Z",
+    "modified": "2023-04-20T02:34:21.633Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c48c3fe7-8594-44db-9221-4605f56d975b",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testDeleteCollegeRoster",
+    "url": "localhost:8001/c/roster/10",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2023-04-20T02:35:35.019Z",
+    "modified": "2023-04-20T02:36:19.437Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "38153ca2-d3a9-4477-94e5-f419764639ea",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testDeleteCollegeRoster2",
+    "url": "localhost:8001/c/roster/40",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-20T02:36:42.616Z",
+    "modified": "2023-04-20T02:37:12.204Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "0ece9258-5abc-4c0c-97ea-36ec1f9a5fa3",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testGetPlayerProfile",
+    "url": "localhost:8001/c/PlayerProfile/8",
+    "method": "GET",
+    "sortNum": 100000,
+    "created": "2023-04-20T02:39:58.970Z",
+    "modified": "2023-04-20T02:40:17.873Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "6edd241a-9cee-43fa-b3d2-d292a569e92e",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testGetPlayerProfile2",
+    "url": "localhost:8001/c/PlayerProfile/98",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2023-04-20T02:41:06.290Z",
+    "modified": "2023-04-20T02:41:16.862Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "2fec22b0-a4b7-4939-a90f-551ed506ced8",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testCreateScoutingReport",
+    "url": "localhost:8001/c/ScoutingReport",
+    "method": "POST",
+    "sortNum": 120000,
+    "created": "2023-04-20T02:44:26.240Z",
+    "modified": "2023-04-20T02:50:59.289Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"playerid\": 90,\n  \"comments\": \"Great 3 and D player, good spark plug off the bench\",\n  \"overallgrade\": 95,\n  \"scout_name\": \"Marcus Truth\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5e92e89a-98af-4f7d-bc28-cbe02792e056",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testCreateScoutingReport2",
+    "url": "localhost:8001/c/ScoutingReport",
+    "method": "POST",
+    "sortNum": 130000,
+    "created": "2023-04-20T02:52:02.835Z",
+    "modified": "2023-04-20T02:53:12.681Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"playerid\": 55,\n  \"comments\": \"Dynamic player, generational talent\",\n  \"overallgrade\": 100,\n  \"scout_name\": \"Victor Ee\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "022caf8b-6421-4829-948a-ed0c70861049",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testUpdateTeamStats",
+    "url": "localhost:8001/c/ColTeam_Stats/2",
+    "method": "PUT",
+    "sortNum": 140000,
+    "created": "2023-04-20T03:20:56.235Z",
+    "modified": "2023-04-20T03:32:17.495Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"team\": null,\n  \"wins\": 25,\n  \"losses\": null,\n  \"ranking\": 2\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "720893ca-666d-4587-9c3f-a9f42fb91c3e",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testUpdateTeamStats2",
+    "url": "localhost:8001/c/ColTeam_Stats/15",
+    "method": "PUT",
+    "sortNum": 150000,
+    "created": "2023-04-20T03:32:54.934Z",
+    "modified": "2023-04-20T03:33:48.812Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"team\": \"Missouri University\",\n  \"wins\": null,\n  \"losses\": 12,\n  \"ranking\": null\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "49ce40eb-05ac-4b00-9f3d-f93cd14742d2",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testUpdateCollegeRoster",
+    "url": "localhost:8001/c/colRoster/1",
+    "method": "PUT",
+    "sortNum": 170000,
+    "created": "2023-04-20T03:44:26.000Z",
+    "modified": "2023-04-20T03:47:28.553Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"first_name\": null,\n  \"last_name\": null,\n  \"position\" : \"C\",\n  \"height\" : 84,\n  \"weight\" : 250,\n  \"grade\" : \"JR\",\n  \"jersey_number\" : null,\n  \"scholarship_type\" : null\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "bb09d085-987d-46c9-8278-32601b620640",
+    "colId": "767d8941-eff2-4894-b7b9-97574718cbb1",
+    "containerId": "",
+    "name": "testUpdateCollegeRoster2",
+    "url": "localhost:8001/c/colRoster/5",
+    "method": "PUT",
+    "sortNum": 180000,
+    "created": "2023-04-20T03:48:31.931Z",
+    "modified": "2023-04-20T03:49:38.823Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"first_name\": \"Patrick\",\n  \"last_name\": \"Star\",\n  \"position\" : null,\n  \"height\" : null,\n  \"weight\" : null,\n  \"grade\" : \"SR\",\n  \"jersey_number\" : 50,\n  \"scholarship_type\" : \"Walk-On\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
