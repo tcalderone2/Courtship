@@ -58,6 +58,36 @@ def create_ScoutingReport():
     db.get_db().commit()
     return "Scouting Report successfully created"
 
+# Retrieve the scouting report based on the given reportID
+@collegeCoach.route('/ScoutingReport/<reportID>', methods=['GET'])
+def get_ScoutingReport(reportID):
+
+    cursor = db.get_db().cursor()
+
+    # Construct the query
+
+    query = "SELECT playerid, comments, overallgrade, scout_name FROM ScoutingReport WHERE reportid = " + reportID + ";"
+
+    # use cursor to query the database for the player profile that has an ID that matches the given ID
+    cursor.execute(query)
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
     
 # Delete the coach profile for a certain coach
 @collegeCoach.route('/coachProfile/<coachID>', methods=['DELETE'])
@@ -87,13 +117,45 @@ def delete_roster(collegeid):
     return "Roster for college successfully deleted"
 
 
+# Retrieve the roster for a certain college
+@collegeCoach.route('/roster/<collegeid>', methods=['GET'])
+def get_roster(collegeid):
+
+    cursor = db.get_db().cursor()
+
+    # Construct the query
+
+    query = "SELECT first_name, last_name, position, height, weight, grade, jersey_number, scholarship_type FROM Col_Roster WHERE collegeid = " + collegeid + ";"
+
+    # use cursor to query the database for the player profile that has an ID that matches the given ID
+    cursor.execute(query)
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+
+
 
 # Retrieve the profile for a certain player so a coach can view their information
 @collegeCoach.route('/PlayerProfile/<PlayerID>', methods=['GET'])
 def get_PlayerProfile(PlayerID):
     cursor = db.get_db().cursor()
 
-    query = select_statement = "SELECT first_name, last_name, grade, age, highschoolid, sat, act, gpa, email FROM Player WHERE playerid = " + PlayerID + ";"
+    query = "SELECT first_name, last_name, grade, age, highschoolid, sat, act, gpa, email FROM Player WHERE playerid = " + PlayerID + ";"
 
     # use cursor to query the database for the player profile that has an ID that matches the given ID
     cursor.execute(query)
@@ -224,3 +286,5 @@ def update_college_roster(collegeid):
 
     # Return a success message
     return f"Player for college {collegeid} updated successfully."
+
+
