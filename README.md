@@ -19,8 +19,12 @@ Here is a [link](https://docs.google.com/document/d/1FbLToa4NtjUlKC-bsWh7cRaHPd9
 ## The Appsmith App
 
 Our appsmith app features four pages that allows:
+- A PUT method for Players to update their personal information
+- A POST method for Scouts to submit their Scouting Reports
+- A GET method for Players to search a college's statistics
+- A DELETE method to delete certain colleges from a roster
 
-The link to the appsmith is [here]()
+The link to the appsmith is [here](https://github.com/DrkLrd15/CourtshipApp)
 
 ## Troubleshooting & FAQ
 
