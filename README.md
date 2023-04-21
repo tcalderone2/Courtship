@@ -24,7 +24,9 @@ Our appsmith app features four pages that allows:
 - A GET method for Players to search a college's statistics
 - A DELETE method to delete certain colleges from a roster
 
-The link to the appsmith is [here](https://github.com/DrkLrd15/CourtshipApp)
+Here's a link to the [Appsmith](https://github.com/DrkLrd15/CourtshipApp)
+
+[Watch a Demo!!](https://www.youtube.com/watch?v=21N6Zcxf0YQ)
 
 ## Troubleshooting & FAQ
 
